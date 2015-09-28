@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>CS Adventure</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="style.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script src="js/lib/jquery.foggy.min.js"></script>
+		<script>								
+			$(document).ready(function(){
+				$("#background").foggy({blurRadius: 12});
+				$("#prompt-input").focus();
+			});
+		</script>
+	</head>
+	<body>
+		<div id="background"></div>
+		<div id="main-container">
+			<div id="terminal">
+				<div id="title-bar">
+					<span id="terminal-icon" class="mdi mdi-console"></span> CS Adventure
+					<span id="user-seperator"> — </span>
+					<span id="terminal-title-bar-username" class="username-displayer">pixelart7</span>
+					<a href="#">
+						<div id="hamburger">
+							<span class="mdi mdi-dots-vertical"></span>
+						</div>
+					</a>
+				</div>
+				<div id="text-area">
+					<p class="text-entry">CS Adventure? What is that?</p>
+					<p class="text-entry">Who's there?</p>
+				</div>
+				<div id="prompt-area">
+					<div id="prompt-area-inner">
+						<div class="clear"></div>
+						<div id="prompt-area-info">
+							<span id="prompt-area-username" class="username-displayer">pixelart7</span> says: 
+						</div>
+						<div id="prompt-area-input">
+							<input type="text" id="prompt-input">
+						</div>
+					</div>
+				</div>
+				<div id="suggestion-area">
+					<span id="suggestion-indicator">no suggestions</span>
+					<div id="suggestion-items">
+						<div class="suggestion-item">login</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
