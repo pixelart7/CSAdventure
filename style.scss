@@ -102,6 +102,7 @@ body {
 			padding: 8px;
 			margin-bottom: 80px;
 			overflow-y: scroll;
+			overflow-x: hidden;
 			-webkit-box-sizing: border-box;
 			-moz-box-sizing: border-box;
 			box-sizing: border-box;
@@ -154,7 +155,7 @@ body {
 						font-family: Hack;
 						color: $color;
 						background: none;
-						background-color: rgba(0, 0, 0, 0.05);
+						background-color: rgba(0, 0, 0, 0.15);
 					}
 				}
 			}
