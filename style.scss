@@ -44,6 +44,8 @@ body {
 	position: relative;
 	top: -10%;
 	left: -10%;
+	right: -10%;
+	bottom: -10%;
 	padding: 10%;
 	z-index: -1;
 }
@@ -59,7 +61,7 @@ body {
 	#terminal {
 		width: 80%;
 		height: 80%;
-		position: relative;
+		position: fixed;
 		top: 10%;
 		left: 10%;
 		background-color: rgba(0, 0, 0, 0.5);

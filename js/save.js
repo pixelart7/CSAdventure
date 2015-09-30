@@ -5,7 +5,7 @@ var template = 	{
 					name: ""
 			 	};
 
-if(store.get("csadventure") == null){
+if(store.get("csadventure") === null){
 	saveTemplate();
 }
 
