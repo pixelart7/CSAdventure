@@ -4,5 +4,6 @@ $(document).ready(function(){
 	UserInterface.init();
 	Story.init();
 	Input.init();
+	Dictionary.init();
 	
 });
