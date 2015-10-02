@@ -2,7 +2,7 @@ $(document).ready(function(){
 	
 	Save.init();
 	UserInterface.init();
-	
-	UserInterface.println("Test");
+	Story.init();
+	Input.init();
 	
 });

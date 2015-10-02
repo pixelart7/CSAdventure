@@ -3,7 +3,7 @@ var Save = {
 	
 	saveTemplate: {
 		version: 1,
-		state: "A1",
+		state: "begin.A1",
 		substate: "",
 		name: ""
 	},

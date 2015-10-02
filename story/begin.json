@@ -1,38 +1,38 @@
 {
-	storyFileVersion: 1,
-	stories: {
+	"storyNamespace": "begin",
+	"storyFileVersion": 1,
+	"stories": {
 		
 		"A1": {
-			title: "The Begining",
-			type: "DIALOG",
-			next: "A2",
-			storySetting: {
-				between: 0.5,
-				lockInput: true
+			"title": "The Begining",
+			"type": "DIALOG",
+			"next": "begin.A2",
+			"storySetting": {
+				"between": 0.5,
+				"background": "login.jpg"
 			},
-			story: {
-				0: {text: "You woke up in the woods."},
-				1: {text: "Everything around you is dark, you can only see the trees nearby."},
-				2: {text: "You heard something in distance."}
-			}
+			"story": [
+				{"text": "You woke up in the woods."},
+				{"text": "Everything around you is dark, you can only see the trees nearby."},
+				{"text": "You heard something in distance."}
+			]
 		},
 		
 		"A2": {
-			title: "The Begining",
-			type: "SPECIFIC_CHOICES",
-			next: "",
-			storySetting: {
-				between: 0,
-				lockInput: false,
-				animate: 0
+			"title": "The Begining",
+			"type": "SPECIFIC_CHOICES",
+			"next": "",
+			"storySetting": {
+				"animate": false,
+				"background": "wilderness.jpg"
 			},
-			story: {
-				0: {text: "So I..."}	
-			},
-			choices: {
-				"walk": {text: "Walk around a little bit.", next: "A2-1"},
-				"stay": {text: "Stay here silently.", next: "A2-2"}
-			}
+			"story": [
+				{"text": "So I..."}	
+			],
+			"choices": [
+				{"activator": "walk", "text": "Walk around a little bit.", "next": "begin.A2-1"},
+				{"activator": "stay", "text": "Stay here silently.", "next": "begin.A2-2"}
+			]
 		}
 	}
 }
