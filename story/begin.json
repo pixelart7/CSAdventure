@@ -1,0 +1,38 @@
+{
+	storyFileVersion: 1,
+	stories: {
+		
+		"A1": {
+			title: "The Begining",
+			type: "DIALOG",
+			next: "A2",
+			storySetting: {
+				between: 0.5,
+				lockInput: true
+			},
+			story: {
+				0: {text: "You woke up in the woods."},
+				1: {text: "Everything around you is dark, you can only see the trees nearby."},
+				2: {text: "You heard something in distance."}
+			}
+		},
+		
+		"A2": {
+			title: "The Begining",
+			type: "SPECIFIC_CHOICES",
+			next: "",
+			storySetting: {
+				between: 0,
+				lockInput: false,
+				animate: 0
+			},
+			story: {
+				0: {text: "So I..."}	
+			},
+			choices: {
+				"walk": {text: "Walk around a little bit.", next: "A2-1"},
+				"stay": {text: "Stay here silently.", next: "A2-2"}
+			}
+		}
+	}
+}

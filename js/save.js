@@ -11,23 +11,30 @@ var Save = {
 	currentSave: {},
 	
 	init: function(){
-		
+		if(!(this.hasSave)){
+			this.storeTemplate();
+		}else{
+			this.loadSave();
+			if(this.currentSave.version < this.saveTemplate.version){
+				//Update Code	
+			}
+		}
 	},
 	
 	loadSave: function(){
-		this.currentSave = store.get(CONFIG.SAVE_NAMESPACE);
+		this.currentSave = store.get(Config.SAVE_NAMESPACE);
 	},
 	
 	updateSave: function(){
-		store.set(CONFIG.SAVE_NAMESPACE, this.currentSave);
+		store.set(Config.SAVE_NAMESPACE, this.currentSave);
 	},
 	
 	storeTemplate: function(){
-		store.set(CONFIG.SAVE_NAMESPACE, this.saveTemplate);
+		store.set(Config.SAVE_NAMESPACE, this.saveTemplate);
 	},
 	
 	hasSave: function(){
-		if( store.get(CONFIG.SAVE_NAMESPACE) === null ){
+		if( store.get(Config.SAVE_NAMESPACE) === null ){
 			return false;	
 		}else{
 			return true;	
