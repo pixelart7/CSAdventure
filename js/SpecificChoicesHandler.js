@@ -15,6 +15,7 @@ var SpecificChoicesHandler = {
 		this.data.storySetting.between = this.data.storySetting.between || 0;
 		this.data.storySetting.lockInput = this.data.storySetting.lockInput || false;
 		this.data.storySetting.animate = this.data.storySetting.animate || true;
+		this.data.storySetting.responseType = this.data.storySetting.responseType || "SAY";
 	},
 	
 	load: function(){
@@ -55,7 +56,11 @@ var SpecificChoicesHandler = {
 				var choiceObj = SpecificChoicesHandler.data.choices[i];
 			}
 		}
-		UserInterface.printYou(choiceObj.text);
+		if(SpecificChoicesHandler.data.storySetting.responseType == "ACTION"){
+			UserInterface.printAction(choiceObj.text);	
+		}else if(SpecificChoicesHandler.data.storySetting.responseType == "SAY"){
+			UserInterface.printYou(choiceObj.text);	
+		}
 		Story.loadStory(choiceObj.next);
 	}
 	

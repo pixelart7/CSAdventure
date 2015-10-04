@@ -15,6 +15,7 @@ var Save = {
 			this.storeTemplate();
 		}else{
 			this.loadSave();
+			Story.loadStory(this.getState());
 			if(this.currentSave.version < this.saveTemplate.version){
 				//Update Code	
 			}

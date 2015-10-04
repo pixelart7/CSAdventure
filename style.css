@@ -156,7 +156,8 @@ body {
         text-decoration: none;
         display: inline-block;
         padding: 5px;
-        cursor: pointer; }
+        cursor: pointer;
+        margin-right: 4px; }
       #main-container #terminal #suggestion-area #suggestion-items-sub > .suggestion-item {
         opacity: 0.8;
         background-color: rgba(0, 0, 0, 0.2); }

@@ -25,8 +25,10 @@ var Story = {
 				Story.storiesCache[keyArray.namespace] = data;
 				Story.displayStory(key);
 			});
+			Save.setState(key);
 		}else{
 			Story.displayStory(key);
+			Save.setState(key);
 		}
 	},
 	
