@@ -183,7 +183,7 @@ body {
 				display: none;
 			}
 			
-			#suggestion-items {
+			.suggestion-items {
 				display: inline-block;
 			}
 			
@@ -196,6 +196,11 @@ body {
 				display: inline-block;
 				padding: 5px;
 				cursor: pointer;
+			}
+			
+			#suggestion-items-sub > .suggestion-item {
+				opacity: 0.8;
+				background-color: rgba(0, 0, 0, 0.2);
 			}
 			
 		}

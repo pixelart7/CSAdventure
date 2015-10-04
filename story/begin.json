@@ -21,7 +21,6 @@
 		"A2": {
 			"title": "The Begining",
 			"type": "SPECIFIC_CHOICES",
-			"next": "",
 			"storySetting": {
 				"animate": false,
 				"background": "wilderness.jpg"
@@ -32,6 +31,19 @@
 			"choices": [
 				{"activator": "walk", "text": "Walk around a little bit.", "next": "begin.A2-1"},
 				{"activator": "stay", "text": "Stay here silently.", "next": "begin.A2-2"}
+			]
+		},
+		
+		"A2-1": {
+			"title": "The Begining",
+			"type": "DIALOG",
+			"next": "",
+			"storySetting": {
+				"animate": false,
+				"background": "wilderness.jpg"
+			},
+			"story": [
+				{"text": "You found a stray tiger-pattern cat."}	
 			]
 		}
 	}

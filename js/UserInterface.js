@@ -55,7 +55,13 @@ var UserInterface = {
 	printYou: function(str, animate){
 		str = str || "...";
 		animate = animate || true;
-		this.println("[You]: " + str, animate);
+		this.println("> [You]: " + str, animate);
+	},
+	
+	printAction: function(str, animate){
+		str = str || "...";
+		animate = animate || true;
+		this.println("> You " + str, animate);
 	},
 	
 	println: function(str, animate){

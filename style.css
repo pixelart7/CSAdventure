@@ -146,7 +146,7 @@ body {
         color: #bfbfbf;
         font-style: italic;
         display: none; }
-      #main-container #terminal #suggestion-area #suggestion-items {
+      #main-container #terminal #suggestion-area .suggestion-items {
         display: inline-block; }
       #main-container #terminal #suggestion-area .suggestion-item {
         background-color: rgba(0, 0, 0, 0.4);
@@ -157,6 +157,9 @@ body {
         display: inline-block;
         padding: 5px;
         cursor: pointer; }
+      #main-container #terminal #suggestion-area #suggestion-items-sub > .suggestion-item {
+        opacity: 0.8;
+        background-color: rgba(0, 0, 0, 0.2); }
     @media only screen and (max-width: 768px) {
       #main-container #terminal {
         width: 100%;

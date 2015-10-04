@@ -1,0 +1,17 @@
+{
+	"storyNamespace": "init",
+	"storyFileVersion": 1,
+	"stories": {
+		
+		"init": {
+			"title": "Initial Story",
+			"type": "DIALOG",
+			"next": "begin.A1",
+			"storySetting": {
+				"background": "login.jpg"
+			},
+			"story": []
+		}
+		
+	}
+}

@@ -2,10 +2,13 @@ var SpecificChoicesHandler = {
 	
 	data: {},
 	
+	instanceID: "",
+	
 	init: function(data){
 		this.data = data;
 		this.default();
 		this.load();
+		this.instanceID = "SpecificChoices_" + ((Math.random()+1).toString(36).substring(7));
 	},
 	
 	default: function(){
@@ -31,10 +34,29 @@ var SpecificChoicesHandler = {
 		for(var i = 0; i < this.data.choices.length; i++){
 			setTimeout(function(i){ 
 				var line = SpecificChoicesHandler.data.choices[i].activator + ") " + SpecificChoicesHandler.data.choices[i].text;
-				UserInterface.println(line, SpecificChoicesHandler.data.storySetting.animate); 
+				UserInterface.println(line, SpecificChoicesHandler.data.storySetting.animate);
+				var cmd = SpecificChoicesHandler.data.choices[i].activator;
+				var group = SpecificChoicesHandler.instanceID;
+				var mode = "KILL_GROUP";
+				var quickInputEnable = true;
+				var callback = SpecificChoicesHandler.callback;
+				var callbackParam = {
+					cmd: cmd	
+				};
+				Input.registerCommand(cmd, group, mode, quickInputEnable, callback, callbackParam);
 			}.bind(i, i), (i * SpecificChoicesHandler.data.storySetting.between * 1000));
 		}
 		
+	},
+	
+	callback: function(callbackParam, args){
+		for( var i = 0; i < SpecificChoicesHandler.data.choices.length; i++){
+			if(SpecificChoicesHandler.data.choices[i].activator == callbackParam.cmd){
+				var choiceObj = SpecificChoicesHandler.data.choices[i];
+			}
+		}
+		UserInterface.printYou(choiceObj.text);
+		Story.loadStory(choiceObj.next);
 	}
 	
 };

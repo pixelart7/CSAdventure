@@ -8,7 +8,8 @@ var Story = {
 	},
 	
 	storiesLocation: {
-		"begin": "story/begin.json"
+		"begin": "story/begin.json",
+		"init": "story/init.json"
 	},
 	
 	init: function(){
@@ -17,7 +18,9 @@ var Story = {
 	
 	loadStory: function(key){
 		var keyArray = this.keySplit(key);
-		if( this.storiesLocation[keyArray.namespace] != null && this.storiesCache[keyArray.namespace] == null){
+		if( key === null || key == "" ){
+			console.log("Error: Something Wrong.");
+		}else if( this.storiesLocation[keyArray.namespace] != null && this.storiesCache[keyArray.namespace] == null){
 			$.getJSON(this.storiesLocation[keyArray.namespace], function(data){
 				Story.storiesCache[keyArray.namespace] = data;
 				Story.displayStory(key);

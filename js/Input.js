@@ -1,30 +1,21 @@
 var Input = {
 	
-	availableCommands: {
-		"walk": {
-			group: "begin.A2",
-			mode: "KILL_GROUP",
-			callback: function(){}
-		},
-		"stay": {
-			group: "begin.A2", 
-			mode: "KILL_GROUP", 
-			callback: function(){}
-		}
-	},
+	availableCommands: {},
 	
-	groups: {
-		"begin.A2": ["walk", "stay"]
-	},
+	groups: {},
 	
 	init: function(){
 		this.registerInputListener();
+		this.registerQuickInputListener();
 	},
 	
-	registerCommand: function(command, group, mode, quickInputEnable, callback){
+	registerCommand: function(command, group, mode, quickInputEnable, callback, callbackParam){
+		this.availableCommands[command] = {};
 		this.availableCommands[command].group = group;
 		this.availableCommands[command].mode = mode;
 		this.availableCommands[command].callback = callback;
+		this.availableCommands[command].callbackParam = callbackParam;
+		this.groups[group] = this.groups[group] || [];
 		this.groups[group].push(command);
 		if(quickInputEnable){
 			this.quickInputAdd(command);
@@ -42,11 +33,11 @@ var Input = {
 				var cmd = args.shift();
 
 				if(Input.availableCommands[cmd] != null){
-					Input.availableCommands[cmd].callback();
-					this.commandLifeCycle(Input.availableCommands[cmd]);
+					Input.availableCommands[cmd].callback(Input.availableCommands[cmd].callbackParam, args);
+					Input.commandLifeCycle(Input.availableCommands[cmd]);
 				}else{
 					UserInterface.printYou(plain);
-					Dictionary.responseRandom("DONTKNOW");
+					UserInterface.println(Dictionary.responseRandom("DONTKNOW"));
 				}
 				
 				$(this).val("");
@@ -55,23 +46,45 @@ var Input = {
 		});
 	},
 	
+	registerQuickInputListener: function(){
+		$(".suggestion-item").click(function(){
+			$("#prompt-input").val($(this).text());
+			$("#prompt-input").focus();
+		});
+	},
+	
 	commandLifeCycle: function(cmdBlock){
 		if(cmdBlock.mode == "KILL_GROUP"){
 			var group = cmdBlock.group;
 			for(var i = 0; i < this.groups[group].length; i++){
-				this.quickInputRemove(this.groups[i]);
-				delete this.availableCommands[this.groups[i]];
+				this.quickInputRemove(this.groups[group][i]);
+				this.removeCommand(this.groups[group][i]);
+				delete this.availableCommands[this.groups[group][i]];
 			}
 			delete this.groups[group];
+		}else if(cmdBlock.mode == "STAY"){
+				
 		}
 	},
 	
-	quickInputAdd: function(command){
-		
+	removeCommand: function(cmd){
+		delete this.availableCommands[cmd];
 	},
 	
-	quickInputRemove: function(command){
-		
+	//private
+	quickInputAdd: function(cmd, isMainCommand){
+		isMainCommand = isMainCommand || true;
+		var addTo = (isMainCommand)? $("#suggestion-items-main"): $("#suggestion-items-sub");
+		addTo.append(
+			"<div class='suggestion-item' id='suggestion-item-" + cmd + "'>" + cmd + "</div>"
+		);
+		this.registerQuickInputListener();
+	},
+	
+	//private
+	quickInputRemove: function(cmd){
+		$("#suggestion-item-" + cmd).remove();
+		this.registerQuickInputListener();
 	}
 	
 };
