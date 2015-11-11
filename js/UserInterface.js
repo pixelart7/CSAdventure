@@ -3,6 +3,7 @@ var UserInterface = {
 	
 	lastLineNumber: 0,
 	currentBackground: "",
+	inputLockState: false,
 	
 	init: function(){
 		this.setBackground("login.jpg");
@@ -33,13 +34,18 @@ var UserInterface = {
 	
 	inputEnabled: function(bool){
 		if(!bool){
-			$("#prompt-input").prop("disabled", true);
+			this.inputLockState = true;
 		}else{
+			this.inputLockState = false;
 			$("#prompt-input").prop("disabled", false);
 			$("#prompt-input").addClass("animated flash");
 			$('#yourElement').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){$("#prompt-input").removeClass("animated flash");});
 			$("#prompt-input").focus();
 		}
+	},
+	
+	isInputEnabled: function(){
+		return this.inputLockState;	
 	},
 	
 	blurAnimate: function(start, stop){

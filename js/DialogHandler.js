@@ -24,7 +24,7 @@ var DialogHandler = {
 		
 		for(var i = 0; i < this.data.story.length; i++){
 			setTimeout(function(i){ 
-				UserInterface.println(DialogHandler.data.story[i].text, DialogHandler.data.storySetting.animate); 
+				UserInterface.println(DialogHandler.data.story[i], DialogHandler.data.storySetting.animate); 
 			}.bind(i, i), (i * this.data.storySetting.between * 1000));
 		}
 		

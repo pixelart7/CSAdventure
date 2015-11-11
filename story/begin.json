@@ -5,56 +5,132 @@
 		
 		"A1": {
 			"title": "The Begining",
-			"type": "DIALOG",
-			"next": "begin.A2",
-			"storySetting": {
-				"between": 0.5,
-				"background": "login.jpg"
-			},
-			"story": [
-				{"text": "You woke up in the woods."},
-				{"text": "Everything around you is dark, you can only see the trees nearby."},
-				{"text": "You heard something in distance."}
-			]
-		},
-		
-		"A2": {
-			"title": "The Begining",
 			"type": "SPECIFIC_CHOICES",
 			"storySetting": {
-				"animate": false,
-				"background": "wilderness.jpg",
+				"between": 0.5,
+				"animate": true,
+				"background": "forest.jpg",
 				"responseType": "ACTION"
 			},
 			"story": [
-				{"text": "So I..."}	
+				"You woke up in the woods.",
+				"Everything around you is dark, you can only see the trees nearby.",
+				"You heard something in a distance.",
+				"",
+				"So I..."
 			],
 			"choices": [
 				{
 					"activator": "walk",
 					"text": "Walk around a little bit.",
-					"next": "begin.A2-1"
+					"next": "begin.A2-A"
 				},
 				{
 					"activator": "stay",
 					"text": "Stay here silently.",
-					"next": "begin.A2-2"
+					"next": "begin.A2-B"
 				}
 			]
 		},
 		
-		"A2-1": {
+		"A2-A": {
 			"title": "The Begining",
-			"type": "DIALOG",
-			"next": "",
+			"type": "SPECIFIC_CHOICES",
 			"storySetting": {
 				"animate": false,
-				"background": "wilderness.jpg",
-				"lockInput": false
+				"background": "forest.jpg",
+				"responseType": "ACTION"
 			},
 			"story": [
-				{"text": "You found a stray tiger-pattern cat."}	
+				"You found a stray tiger-pattern cat.",
+				"He is staring at you. His left eye is yellow. His right eye is bright red.",
+				"He is standing up and trying to run.",
+				"",
+				"So I..."
+			],
+			"choices": [
+				{
+					"activator": "catch",
+					"text": "Try to catch him.",
+					"next": "begin.A2-A1"
+				},
+				{
+					"activator": "say",
+					"text": "Say 'Meow'",
+					"next": "begin.A2-A2"
+				},
+				{
+					"activator": "stay",
+					"text": "Stay here doing nothing.",
+					"next": "begin.A2-B"
+				}
 			]
+		},
+		
+		"A2-A1": {
+			"title": "The Begining",
+			"type": "DIALOG",
+			"next": "begin.A2-B",
+			"storySetting": {
+				"between": 0.5,
+				"background": "forest.jpg"
+			},
+			"story": [
+				"Unfortunately, he ran too fast. You caught air."
+			]	
+		},
+		
+		"A2-A2": {
+			"title": "The Begining",
+			"type": "DIALOG",
+			"next": "begin.A2-B",
+			"storySetting": {
+				"between": 0.5,
+				"background": "forest.jpg"
+			},
+			"story": [
+				"He response 'Meow' back, but he ran away."
+			]	
+		},
+		
+		"A2-B": {
+			"title": "The Begining",
+			"type": "DIALOG",
+			"next": "begin.A2",
+			"storySetting": {
+				"between": 0.5,
+				"background": "forest.jpg"
+			},
+			"story": [
+				"So, I standing here..",
+				"...",
+				"Nothing is happening, obviously.",
+				"I start to walk..."
+			]	
+		},
+		
+		"A2": {
+			"title": "The Begining",
+			"type": "DIALOG",
+			"next": "begin.A3",
+			"storySetting": {
+				"between": 0.8,
+				"background": "foggy-forest.jpg"
+			},
+			"story": [
+				"...",
+				"I think I start walking an hour ago.",
+				"Suddenly.. I feel pain in my head and my stomach",
+				"You heard someone shout in a distance.",
+				"[Woman] You shall not leave this woods... you shall not move by your own body. You are cursed!",
+				"After it ends. You can't move your body. You fell down to the ground.",
+				"[Woman] You will live there for the next 4 years! No matter what!",
+				"'there'... Where, I wonder?",
+				"I fainted...",
+				"..",
+				"."
+			]	
 		}
+		
 	}
 }

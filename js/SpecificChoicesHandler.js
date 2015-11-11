@@ -28,7 +28,7 @@ var SpecificChoicesHandler = {
 		
 		for(var i = 0; i < this.data.story.length; i++){
 			setTimeout(function(i){ 
-				UserInterface.println(SpecificChoicesHandler.data.story[i].text, SpecificChoicesHandler.data.storySetting.animate); 
+				UserInterface.println(SpecificChoicesHandler.data.story[i], SpecificChoicesHandler.data.storySetting.animate); 
 			}.bind(i, i), (i * SpecificChoicesHandler.data.storySetting.between * 1000));
 		}
 		
@@ -45,7 +45,7 @@ var SpecificChoicesHandler = {
 					cmd: cmd	
 				};
 				Input.registerCommand(cmd, group, mode, quickInputEnable, callback, callbackParam);
-			}.bind(i, i), (i * SpecificChoicesHandler.data.storySetting.between * 1000));
+			}.bind(i, i), ((this.data.story.length * SpecificChoicesHandler.data.storySetting.between * 1000) + (i * SpecificChoicesHandler.data.storySetting.between * 1000)));
 		}
 		
 	},

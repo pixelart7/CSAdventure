@@ -2,15 +2,9 @@ var Story = {
 	
 	storiesCache: {},
 	
-	handlerMap: {
-		"DIALOG": function(data){DialogHandler.init(data)},
-		"SPECIFIC_CHOICES": function(data){SpecificChoicesHandler.init(data)}
-	},
+	handlerMap: Config.HANDLERMAP,
 	
-	storiesLocation: {
-		"begin": "story/begin.json",
-		"init": "story/init.json"
-	},
+	storiesLocation: Config.STORIESLOC,
 	
 	init: function(){
 		
@@ -25,10 +19,9 @@ var Story = {
 				Story.storiesCache[keyArray.namespace] = data;
 				Story.displayStory(key);
 			});
-			Save.setState(key);
 		}else{
 			Story.displayStory(key);
-			Save.setState(key);
+			UserInterface.println("");
 		}
 	},
 	
@@ -39,6 +32,7 @@ var Story = {
 			if( this.storiesCache[keyArray.namespace].stories[keyArray.number] != null ){
 				var thisStory = this.storiesCache[keyArray.namespace].stories[keyArray.number];
 				this.handlerMap[thisStory.type](thisStory);
+				Save.setState(key);
 			}else{
 				console.log("Error: Story doesn't cached.");	
 			}

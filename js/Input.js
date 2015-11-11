@@ -7,6 +7,7 @@ var Input = {
 	init: function(){
 		this.registerInputListener();
 		this.registerQuickInputListener();
+		Input.registerCommand("admin", "Special_admin", "STAY", false, AdminCommand.commandHandler, {});
 	},
 	
 	registerCommand: function(command, group, mode, quickInputEnable, callback, callbackParam){
@@ -26,21 +27,27 @@ var Input = {
 		$("#prompt-input").keydown(function(e){
 			if ( e.which == 13 ){
 				e.preventDefault();
-
+				
 				var plain = $(this).val().trim();
 				var plainArr = plain.split(" ");
 				var args = plainArr;
 				var cmd = args.shift();
-
-				if(Input.availableCommands[cmd] != null){
-					Input.availableCommands[cmd].callback(Input.availableCommands[cmd].callbackParam, args);
-					Input.commandLifeCycle(Input.availableCommands[cmd]);
-				}else{
-					UserInterface.printYou(plain);
-					UserInterface.println(Dictionary.responseRandom("DONTKNOW"));
-				}
 				
-				$(this).val("");
+				if(!UserInterface.isInputEnabled() || cmd == "admin"){
+
+					if(Input.availableCommands[cmd] != null){
+						Input.availableCommands[cmd].callback(Input.availableCommands[cmd].callbackParam, args);
+						Input.commandLifeCycle(Input.availableCommands[cmd]);
+					}else{
+						UserInterface.printYou(plain);
+						UserInterface.println(Dictionary.responseRandom("DONTKNOW"));
+					}
+
+					$(this).val("");
+					
+				}else{
+					//Do nothing
+				}
 				
 			}
 		});
